@@ -50,9 +50,9 @@ class MenuBarViewController : UICollectionViewController, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = self.titles[indexPath.row].widthOfString(usingFont: UIFont.systemFont(ofSize: 16))
+        let width = self.titles[indexPath.row].widthOfString(usingFont: UIFont.systemFont(ofSize: 16)) + MenuBarItemCell.SIDE_PADDING * 2
         
-        return CGSize(width: width + MenuBarItemCell.SIDE_PADDING * 2, height: MenuBarViewController.ITEM_HEIGHT)
+        return CGSize(width: width < 100 ? 100 : width, height: MenuBarViewController.ITEM_HEIGHT)
     }
     
     
