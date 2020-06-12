@@ -1,5 +1,5 @@
 //
-//  MenuBarViewController.swift
+//  PaginatedViewController.swift
 //  SwiftPagingController
 //
 //  Created by Zhang Qiuhao on 6/12/20.
@@ -9,30 +9,24 @@
 import Foundation
 import UIKit
 
-class MenuBarViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class PaginatedViewController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    private var titles : [String] = []
-    
-    static let ITEM_HEIGHT : CGFloat = 50
-    
-    let cellId = "cellId"
+    private var controllers : [UIViewController] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.backgroundColor = .lightGray
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
-        self.collectionView.register(MenuBarItemCell.self, forCellWithReuseIdentifier: cellId)
-        self.collectionView.isPagingEnabled = true
+        self.collectionView.register(PaginatedItemCell.self, forCellWithReuseIdentifier: Constants.PAGINATED_ITEM_CELL)
+        self.collectionView.allowsSelection = false
         self.collectionView.isScrollEnabled = true
+        self.collectionView.isPagingEnabled = true
     }
     
-    init(titles: [String]) {
+    init(controllers: [UIViewController]) {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         super.init(collectionViewLayout: layout)
-        
-        self.titles = titles
+        self.controllers = controllers
     }
     
     required init?(coder: NSCoder) {
@@ -40,21 +34,22 @@ class MenuBarViewController : UICollectionViewController, UICollectionViewDelega
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.titles.count
+        return self.controllers.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MenuBarItemCell
-        cell.title.text = self.titles[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.PAGINATED_ITEM_CELL, for: indexPath) as! PaginatedItemCell
+        
+        cell.displayView.addSubview(self.controllers[indexPath.row].view)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = self.titles[indexPath.row].widthOfString(usingFont: UIFont.systemFont(ofSize: 16))
-        
-        return CGSize(width: width + MenuBarItemCell.SIDE_PADDING * 2, height: MenuBarViewController.ITEM_HEIGHT)
+        return CGSize(width: self.view.frame.width, height: self.view.frame.height)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
     
 }
-

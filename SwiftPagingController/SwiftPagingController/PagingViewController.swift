@@ -12,9 +12,9 @@ import UIKit
 class PagingViewController : UIViewController {
     
     private var menuBarVC : MenuBarViewController!
+    private var paginatedVC : PaginatedViewController!
     private var controllers : [UIViewController] = []
     private var controllerTitles : [String] = []
-    private var menuBarView : UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +29,16 @@ class PagingViewController : UIViewController {
         self.view.addSubview(controllers[0].view)
         self.menuBarVC = MenuBarViewController(titles: self.controllerTitles)
         self.addChild(self.menuBarVC)
-        self.menuBarVC.didMove(toParent: self)
-        self.menuBarView = self.menuBarVC.collectionView
-        self.menuBarView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.menuBarView)
-        self.menuBarView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        self.menuBarView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-        self.menuBarView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        self.paginatedVC = PaginatedViewController(controllers: controllers)
+        self.addChild(self.paginatedVC)
+        self.view.addSubview(self.menuBarVC.collectionView)
+        self.view.addSubview(self.paginatedVC.collectionView)
+        self.menuBarVC.collectionView.heightAnchor.constraint(equalToConstant: MenuBarViewController.ITEM_HEIGHT).isActive = true
+        self.menuBarVC.collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        self.menuBarVC.collectionView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+        self.paginatedVC.collectionView.topAnchor.constraint(equalTo: self.menuBarVC.collectionView.bottomAnchor).isActive = true
+        self.paginatedVC.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        self.paginatedVC.collectionView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
     }
     
     required init?(coder: NSCoder) {

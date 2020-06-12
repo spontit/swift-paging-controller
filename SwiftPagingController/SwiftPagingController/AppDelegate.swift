@@ -24,8 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         VC2.title = "VC2"
         let VC3 = UIViewController()
         VC3.view.backgroundColor = .green
-        VC3.title = "VC3"
-        let VCs = [VC1, VC2, VC3]
+        VC3.title = "VC3829479"
+        let VC4 = UIViewController()
+        VC4.view.backgroundColor = .orange
+        VC4.title = "VC4444444444444444444"
+        let VCs = [VC1, VC2, VC3, VC4]
         
         let pageVC = PagingViewController(controllers: VCs)
         

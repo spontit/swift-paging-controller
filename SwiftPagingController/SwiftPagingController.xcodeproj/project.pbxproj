@@ -16,7 +16,9 @@
 		A26EDDAB2493EBDA00087A4B /* PagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26EDDAA2493EBDA00087A4B /* PagingViewController.swift */; };
 		A26EDDAD2493EDBD00087A4B /* MenuBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26EDDAC2493EDBD00087A4B /* MenuBarViewController.swift */; };
 		A26EDDAF2493F18F00087A4B /* MenuBarItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26EDDAE2493F18F00087A4B /* MenuBarItemCell.swift */; };
-		A26EDDB3249408EF00087A4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26EDDB2249408EE00087A4B /* ViewController.swift */; };
+		A26EDDB52494329600087A4B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26EDDB42494329600087A4B /* Extensions.swift */; };
+		A26EDDB7249434BC00087A4B /* PaginatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26EDDB6249434BC00087A4B /* PaginatedViewController.swift */; };
+		A26EDDB92494357100087A4B /* PaginatedItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26EDDB82494357100087A4B /* PaginatedItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +54,9 @@
 		A26EDDAA2493EBDA00087A4B /* PagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingViewController.swift; sourceTree = "<group>"; };
 		A26EDDAC2493EDBD00087A4B /* MenuBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarViewController.swift; sourceTree = "<group>"; };
 		A26EDDAE2493F18F00087A4B /* MenuBarItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarItemCell.swift; sourceTree = "<group>"; };
-		A26EDDB2249408EE00087A4B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A26EDDB42494329600087A4B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A26EDDB6249434BC00087A4B /* PaginatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedViewController.swift; sourceTree = "<group>"; };
+		A26EDDB82494357100087A4B /* PaginatedItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +107,6 @@
 		A26EDD792493EA0000087A4B /* SwiftPagingController */ = {
 			isa = PBXGroup;
 			children = (
-				A26EDDB2249408EE00087A4B /* ViewController.swift */,
 				A26EDD7A2493EA0000087A4B /* AppDelegate.swift */,
 				A26EDD802493EA0000087A4B /* Main.storyboard */,
 				A26EDD832493EA0300087A4B /* Assets.xcassets */,
@@ -112,6 +115,9 @@
 				A26EDDAA2493EBDA00087A4B /* PagingViewController.swift */,
 				A26EDDAC2493EDBD00087A4B /* MenuBarViewController.swift */,
 				A26EDDAE2493F18F00087A4B /* MenuBarItemCell.swift */,
+				A26EDDB42494329600087A4B /* Extensions.swift */,
+				A26EDDB6249434BC00087A4B /* PaginatedViewController.swift */,
+				A26EDDB82494357100087A4B /* PaginatedItemCell.swift */,
 			);
 			path = SwiftPagingController;
 			sourceTree = "<group>";
@@ -265,8 +271,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A26EDDB3249408EF00087A4B /* ViewController.swift in Sources */,
+				A26EDDB52494329600087A4B /* Extensions.swift in Sources */,
 				A26EDDAB2493EBDA00087A4B /* PagingViewController.swift in Sources */,
+				A26EDDB7249434BC00087A4B /* PaginatedViewController.swift in Sources */,
+				A26EDDB92494357100087A4B /* PaginatedItemCell.swift in Sources */,
 				A26EDD7B2493EA0000087A4B /* AppDelegate.swift in Sources */,
 				A26EDDAD2493EDBD00087A4B /* MenuBarViewController.swift in Sources */,
 				A26EDDAF2493F18F00087A4B /* MenuBarItemCell.swift in Sources */,

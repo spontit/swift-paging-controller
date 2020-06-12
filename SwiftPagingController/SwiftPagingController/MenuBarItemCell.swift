@@ -10,11 +10,15 @@ import Foundation
 import UIKit
 
 class MenuBarItemCell : UICollectionViewCell {
+    
+    static let SIDE_PADDING : CGFloat = 5
+    
     // MARK: -Globals
     var title : UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
         lbl.textColor = .black
+        lbl.font = UIFont.systemFont(ofSize: 16)
         return lbl
     }()
     
@@ -22,10 +26,11 @@ class MenuBarItemCell : UICollectionViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
-        view.widthAnchor.constraint(equalToConstant: MenuBarViewController.ITEM_WIDTH).isActive = true
         view.heightAnchor.constraint(equalToConstant: 5).isActive = true
         return view
     }()
+    
+    
     
     // MARK: -Overriden Functions
     override init(frame: CGRect) {
@@ -51,6 +56,8 @@ class MenuBarItemCell : UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+
+    
     //MARK: -Helpler Functions
     private func setUp() {
         self.contentView.addSubview(self.title)
@@ -58,8 +65,10 @@ class MenuBarItemCell : UICollectionViewCell {
 
         self.title.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
         self.title.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        
         self.contentView.addSubview(self.selectionBar)
         self.selectionBar.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0).isActive = true
+        self.selectionBar.widthAnchor.constraint(equalToConstant: self.contentView.frame.width).isActive = true
         self.selectionBar.isHidden = true
     }
 }
