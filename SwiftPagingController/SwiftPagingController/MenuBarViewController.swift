@@ -22,8 +22,6 @@ class MenuBarViewController : UICollectionViewController, UICollectionViewDelega
         super.viewDidLoad()
         collectionView.backgroundColor = .lightGray
         collectionView.register(MenuBarItemCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView.heightAnchor.constraint(equalToConstant: MenuBarViewController.ITEM_HEIGHT).isActive = true
-        self.view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         collectionView.isPagingEnabled = true
         collectionView.isScrollEnabled = true
     }
@@ -32,6 +30,7 @@ class MenuBarViewController : UICollectionViewController, UICollectionViewDelega
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         super.init(collectionViewLayout: layout)
+
         self.titles = titles
     }
     
