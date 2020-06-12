@@ -15,13 +15,12 @@ class MenuBarViewController : UICollectionViewController, UICollectionViewDelega
     
     static let ITEM_HEIGHT : CGFloat = 50
     
-    let cellId = "cellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.backgroundColor = .lightGray
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
-        self.collectionView.register(MenuBarItemCell.self, forCellWithReuseIdentifier: cellId)
+        self.collectionView.register(MenuBarItemCell.self, forCellWithReuseIdentifier: Constants.MENU_BAR_ITEM_CELL)
         self.collectionView.isPagingEnabled = true
         self.collectionView.isScrollEnabled = true
     }
@@ -44,7 +43,7 @@ class MenuBarViewController : UICollectionViewController, UICollectionViewDelega
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MenuBarItemCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.MENU_BAR_ITEM_CELL, for: indexPath) as! MenuBarItemCell
         cell.title.text = self.titles[indexPath.row]
         return cell
     }
