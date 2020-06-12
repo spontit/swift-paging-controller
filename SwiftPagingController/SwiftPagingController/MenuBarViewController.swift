@@ -13,7 +13,7 @@ class MenuBarViewController : UICollectionViewController, UICollectionViewDelega
     
     private var titles : [String] = []
     
-    static let ITEM_WIDTH : CGFloat = 80
+    static let ITEM_WIDTH : CGFloat = 180
     static let ITEM_HEIGHT : CGFloat = 50
     
     let cellId = "cellId"
@@ -30,7 +30,7 @@ class MenuBarViewController : UICollectionViewController, UICollectionViewDelega
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         super.init(collectionViewLayout: layout)
-
+        
         self.titles = titles
     }
     

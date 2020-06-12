@@ -18,6 +18,15 @@ class MenuBarItemCell : UICollectionViewCell {
         return lbl
     }()
     
+    var selectionBar : UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.widthAnchor.constraint(equalToConstant: MenuBarViewController.ITEM_WIDTH).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        return view
+    }()
+    
     // MARK: -Overriden Functions
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,12 +36,14 @@ class MenuBarItemCell : UICollectionViewCell {
     override var isHighlighted: Bool {
         didSet {
             self.title.textColor = isHighlighted ? .white : .black
+            self.selectionBar.isHidden = !isHighlighted
         }
     }
     
     override var isSelected: Bool {
         didSet {
             self.title.textColor = isSelected ? .white : .black
+            self.selectionBar.isHidden = !isSelected
         }
     }
     
@@ -47,5 +58,8 @@ class MenuBarItemCell : UICollectionViewCell {
 
         self.title.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
         self.title.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        self.contentView.addSubview(self.selectionBar)
+        self.selectionBar.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0).isActive = true
+        self.selectionBar.isHidden = true
     }
 }
