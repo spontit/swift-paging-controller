@@ -15,6 +15,7 @@ class MenuBarViewController : UICollectionViewController, UICollectionViewDelega
     
     static let ITEM_HEIGHT : CGFloat = 50
     
+    var paginatedVC : PaginatedViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,14 @@ class MenuBarViewController : UICollectionViewController, UICollectionViewDelega
         let width = self.titles[indexPath.row].widthOfString(usingFont: UIFont.systemFont(ofSize: 16)) + MenuBarItemCell.SIDE_PADDING * 2
         
         return CGSize(width: width < 100 ? 100 : width, height: MenuBarViewController.ITEM_HEIGHT)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.paginatedVC.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     

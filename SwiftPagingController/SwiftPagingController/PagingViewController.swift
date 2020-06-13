@@ -14,7 +14,6 @@ class PagingViewController : UIViewController {
     private var menuBarVC : MenuBarViewController!
     private var paginatedVC : PaginatedViewController!
     private var controllers : [UIViewController] = []
-    private var controllerTitles : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +22,15 @@ class PagingViewController : UIViewController {
     init(controllers : [UIViewController]) {
         super.init(nibName: nil, bundle: nil)
         self.controllers = controllers
+        var controllerTitles : [String] = []
         for con in controllers {
-            self.controllerTitles.append(con.title ?? " ")
+            controllerTitles.append(con.title ?? " ")
         }
         self.view.addSubview(controllers[0].view)
-        self.menuBarVC = MenuBarViewController(titles: self.controllerTitles)
+        self.menuBarVC = MenuBarViewController(titles: controllerTitles)
         self.addChild(self.menuBarVC)
         self.paginatedVC = PaginatedViewController(controllers: controllers)
+        self.menuBarVC.paginatedVC = self.paginatedVC
         self.addChild(self.paginatedVC)
         self.view.addSubview(self.menuBarVC.collectionView)
         self.view.addSubview(self.paginatedVC.collectionView)
