@@ -40,7 +40,7 @@ class PaginatedViewController : UICollectionViewController, UICollectionViewDele
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.PAGINATED_ITEM_CELL, for: indexPath) as! PaginatedItemCell
         
-        cell.displayView.addSubview(self.controllers[indexPath.row].view)
+        cell.displayView = self.controllers[indexPath.row].view
         return cell
     }
     

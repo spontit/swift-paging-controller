@@ -11,11 +11,18 @@ import UIKit
 
 class PaginatedItemCell : UICollectionViewCell {
     
-    var displayView : UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    var displayView : UIView! {
+        didSet {
+            for view in self.contentView.subviews {
+                view.removeFromSuperview()
+            }
+            self.contentView.addSubview(self.displayView)
+            self.displayView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
+            self.displayView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+            self.displayView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
+            self.displayView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+        }
+    }
     
     
     override init(frame: CGRect) {
@@ -28,15 +35,8 @@ class PaginatedItemCell : UICollectionViewCell {
     }
     
     private func setUp() {
-        for view in self.contentView.subviews {
-            view.removeFromSuperview()
-        }
         self.contentView.backgroundColor = .white
-        self.contentView.addSubview(self.displayView)
-        self.displayView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        self.displayView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        self.displayView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        self.displayView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+        
     }
     
 }
