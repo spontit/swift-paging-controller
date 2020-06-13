@@ -17,6 +17,7 @@ class PaginatedItemCell : UICollectionViewCell {
         return view
     }()
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setUp()

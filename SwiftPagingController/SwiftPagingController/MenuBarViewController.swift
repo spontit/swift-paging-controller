@@ -22,6 +22,7 @@ class MenuBarViewController : UICollectionViewController, UICollectionViewDelega
         self.collectionView.backgroundColor = .lightGray
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.collectionView.register(MenuBarItemCell.self, forCellWithReuseIdentifier: Constants.MENU_BAR_ITEM_CELL)
+        self.collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
         self.collectionView.isPagingEnabled = true
         self.collectionView.isScrollEnabled = true
     }
