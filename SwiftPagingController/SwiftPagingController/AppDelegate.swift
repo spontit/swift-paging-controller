@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let VC1 = UIViewController()
         VC1.view.backgroundColor = .blue
-        VC1.title = "VC1"
+        VC1.title = "View Controller 1"
         let VC2 = UIViewController()
         VC2.view.backgroundColor = .red
         VC2.title = "VC2"

@@ -13,6 +13,8 @@ class PaginatedViewController : UICollectionViewController, UICollectionViewDele
     
     private var controllers : [UIViewController] = []
     
+    var menuBar : MenuBarViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -50,6 +52,12 @@ class PaginatedViewController : UICollectionViewController, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let index = targetContentOffset.pointee.x / self.view.frame.width
+        
+        self.menuBar.collectionView.selectItem(at: IndexPath(item: Int(index), section: 0), animated: true, scrollPosition: .centeredHorizontally)
     }
     
 }

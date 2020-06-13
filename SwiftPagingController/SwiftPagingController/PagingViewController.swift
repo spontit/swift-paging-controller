@@ -29,6 +29,7 @@ class PagingViewController : UIViewController {
         self.addChild(self.menuBarVC)
         self.paginatedVC = PaginatedViewController(controllers: controllers)
         self.menuBarVC.paginatedVC = self.paginatedVC
+        self.paginatedVC.menuBar = self.menuBarVC
         self.addChild(self.paginatedVC)
         self.view.addSubview(self.menuBarVC.collectionView)
         self.view.addSubview(self.paginatedVC.collectionView)

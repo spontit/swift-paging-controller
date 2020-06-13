@@ -14,17 +14,20 @@ class MenuBarViewController : UICollectionViewController, UICollectionViewDelega
     private var titles : [String] = []
     
     static let ITEM_HEIGHT : CGFloat = 50
+    static let LEFT_INSET_PADDING : CGFloat = -30
     
     var paginatedVC : PaginatedViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.backgroundColor = .lightGray
+        self.collectionView.backgroundColor = .gray
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.collectionView.register(MenuBarItemCell.self, forCellWithReuseIdentifier: Constants.MENU_BAR_ITEM_CELL)
         self.collectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+        self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: MenuBarViewController.LEFT_INSET_PADDING)
         self.collectionView.isPagingEnabled = true
         self.collectionView.isScrollEnabled = true
+        
     }
     
     init(titles: [String]) {
@@ -62,6 +65,7 @@ class MenuBarViewController : UICollectionViewController, UICollectionViewDelega
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.paginatedVC.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     
